@@ -15,7 +15,7 @@
   become: yes
   with_items:
     - pip2
-    - pip3
+    # - pip3
 
 - name: Install Virtualenv
   pip: name=virtualenv executable={{ item }}

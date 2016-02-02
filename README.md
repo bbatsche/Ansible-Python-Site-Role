@@ -1,6 +1,8 @@
 Ansible Python Site Role
 ========================
 
+[![Build Status](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role.svg?branch=master)](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role)
+
 This role will create a site in Nginx for running applications written in Python. It supports either Python 2.7 or 3.4.
 
 Role Variables

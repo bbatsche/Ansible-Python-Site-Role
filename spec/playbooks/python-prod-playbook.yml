@@ -3,6 +3,7 @@
   vars:
     site_type: python
     env_name: prod
+    domain: prod-test.dev
   vars_files:
     - ../../defaults/main.yml
   roles:

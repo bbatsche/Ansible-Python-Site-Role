@@ -12,7 +12,7 @@ Role Variables
 - `python_version` &mdash; Python version to use with this site. Default is "3". Other possible values are "3.4", "2", or "2.7". In general, you should probably stick to major version numbers.
 - `env_name` &mdash; Whether this server is a "development", "production", or other type of server. Development servers will use the global Python binaries and packages, other types will use a virtualenv setup in the site directory. Default is "dev".
 - `copy_wsgi` &mdash; Whether to copy a stub passenger_wsgi.py file to the site, useful for testing. Default is no.
-- `http_root` &mdash; Directory all site directories will be created under. Default is "/srv/www".
+- `http_root` &mdash; Directory all site directories will be created under. Default is "/srv/http".
 
 Dependencies
 ------------
@@ -25,8 +25,6 @@ ansible-galaxy install bbatsche.Nginx
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```yml
 - hosts: servers

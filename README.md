@@ -1,22 +1,25 @@
-Role Name
-=========
+Ansible Python Site Role
+========================
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role will create a site in Nginx for running applications written in Python. It supports either Python 2.7 or 3.4.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- `domain` &mdash; Site domain to be created.
+- `python_version` &mdash; Python version to use with this site. Default is "3". Other possible values are "3.4", "2", or "2.7". In general, you should probably stick to major version numbers.
+- `env_name` &mdash; Whether this server is a "development", "production", or other type of server. Development servers will use the global Python binaries and packages, other types will use a virtualenv setup in the site directory. Default is "dev".
+- `copy_wsgi` &mdash; Whether to copy a stub passenger_wsgi.py file to the site, useful for testing. Default is no.
+- `http_root` &mdash; Directory all site directories will be created under. Default is "/srv/www".
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role depends on bbatsche.Nginx. You must install that role first using:
+
+```bash
+ansible-galaxy install bbatsche.Nginx
+```
 
 Example Playbook
 ----------------
@@ -26,7 +29,7 @@ Including an example of how to use your role (for instance, with variables passe
 ```yml
 - hosts: servers
   roles:
-     - { role: bbatsche.rolename, x: 42 }
+     - { role: bbatsche.Python, domain: my-python-site.dev }
 ```
 
 License
@@ -61,8 +64,3 @@ There are several rake tasks for interacting with the test environment, includin
 - `rake vagrant[cmd]` &mdash; Run some arbitrary Vagrant command in the test environment. For example, to log in to the test environment run: `rake vagrant[ssh]`
 
 These specs are **not** meant to test for idempotence. They are meant to check that the specified tasks perform their expected steps. Idempotency can be tested independently as a form of integration testing.
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).

@@ -1,8 +1,10 @@
 ---
 - hosts: all
+  vars:
+    site_type: python
   vars_files:
     - ../../defaults/main.yml
+  roles:
+    - bbatsche.Nginx
   tasks:
     - include: ../../tasks/main.yml
-  handlers:
-    - include: ../../handlers/main.yml

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    site_type: python
+    env_name: prod
+  vars_files:
+    - ../../defaults/main.yml
+  roles:
+    - bbatsche.Nginx
+  tasks:
+    - include: ../../tasks/main.yml
+  post_tasks:
+    - name: Create Python Virutalenv
+      command: virtualenv {{ http_root }}/{{ domain }}/env -p python{{ python_version }}

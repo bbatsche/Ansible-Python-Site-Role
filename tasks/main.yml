@@ -27,7 +27,7 @@
 - name: Source Virtualenv Wrapper to Shell
   file:
     state: link
-    src: /usr/local/bin/virtualenvwrapper_lazy.sh
+    src: /usr/local/bin/virtualenvwrapper.sh
     dest: /etc/profile.d/virtualenvwrapper.sh
   become: yes
 

@@ -4,11 +4,15 @@
   become: yes
 
   vars:
-    site_type: python
     domain: test.dev
+
   vars_files:
     - defaults/main.yml
+
   roles:
-    - bbatsche.Nginx
+    - role: bbatsche.Base
+    - role: bbatsche.Nginx
+      site_type: python
+
   tasks:
     - include: tasks/main.yml

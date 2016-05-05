@@ -5,6 +5,11 @@ Ansible Python Site Role
 
 This role will create a site in Nginx for running applications written in Python. It supports either Python 2.7 or 3.4.
 
+Requirements
+------------
+
+This role takes advantage of Linux filesystem ACLs and a group called "web-admin" for granting access to particular directories. You can either configure those steps manually or install the [`bbatsche.Base`](https://galaxy.ansible.com/bbatsche/Base/) role.
+
 Role Variables
 --------------
 

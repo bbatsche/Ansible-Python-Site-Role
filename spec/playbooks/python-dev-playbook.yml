@@ -1,11 +1,15 @@
 ---
 - hosts: all
+
   vars:
     site_type: python
     domain: dev-test.dev
+
   vars_files:
     - ../../defaults/main.yml
+
   roles:
     - bbatsche.Nginx
+
   tasks:
     - include: ../../tasks/main.yml

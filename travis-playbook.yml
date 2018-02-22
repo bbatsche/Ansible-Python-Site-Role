@@ -8,7 +8,6 @@
     - defaults/main.yml
 
   roles:
-    - role: bbatsche.Base
     - role: bbatsche.Nginx
       site_type: python
 

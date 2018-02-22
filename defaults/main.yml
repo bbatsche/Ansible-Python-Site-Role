@@ -1,3 +1,6 @@
 ---
 python_version: 3
+
 copy_wsgi: no
+
+nginx_configs: "{{ [ 'python-' + domain + '.conf' ] if domain is defined else [] }}"

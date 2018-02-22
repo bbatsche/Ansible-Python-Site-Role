@@ -18,4 +18,4 @@ galaxy_info:
     - python2
     - python3
 dependencies:
-  - { role: bbatsche.Nginx, site_type: python }
+  - role: bbatsche.Nginx

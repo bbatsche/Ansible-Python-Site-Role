@@ -1,15 +1,20 @@
 ---
 - hosts: all
+
   vars:
-    site_type: python
-    env_name: prod
-    domain: prod-test.dev
+    domain: python.test
+
   vars_files:
     - ../../defaults/main.yml
+
   roles:
-    - bbatsche.Nginx
+    - role: bbatsche.Nginx
+      passenger_app: yes
+
   tasks:
     - include: ../../tasks/main.yml
+
   post_tasks:
     - name: Create Python Virutalenv
       command: virtualenv {{ http_root }}/{{ domain }}/env -p python{{ python_version }}
+      when: env_name != "prod"

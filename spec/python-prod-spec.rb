@@ -2,7 +2,10 @@ require_relative "bootstrap"
 
 RSpec.configure do |config|
   config.before :suite do
-    AnsibleHelper.playbook "playbooks/python-prod-playbook.yml", ENV["TARGET_HOST"], copy_wsgi: true
+    AnsibleHelper.playbook("playbooks/python-playbook.yml", ENV["TARGET_HOST"], {
+      copy_wsgi: true,
+      env_name:  "prod"
+    })
   end
 end
 
@@ -10,8 +13,13 @@ context "Nginx" do
   include_examples "nginx"
 end
 
-describe command('curl -i prod-test.dev') do
-  its(:stdout) { should match /^HTTP\/1\.1 200 OK$/ }
+describe "Python site" do
+  let(:subject) { command "curl -i python.test" }
 
-  its(:stdout) { should match /Phusion Passenger is serving Python 3 code on prod-test\.dev/ }
+  include_examples "curl request", "200"
+  include_examples "curl request html"
+
+  it "executed Python code" do
+    expect(subject.stdout).to match /Phusion Passenger is serving Python 3 code on python\.test/
+  end
 end

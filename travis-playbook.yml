@@ -2,14 +2,14 @@
 - hosts: all
 
   vars:
-    domain: test.dev
+    domain: python.test
 
   vars_files:
     - defaults/main.yml
 
   roles:
     - role: bbatsche.Nginx
-      site_type: python
+      passenger_app: yes
 
   tasks:
     - include: tasks/main.yml

@@ -1,14 +1,16 @@
-require_relative "lib/ansible_helper"
 require_relative "bootstrap"
 
 RSpec.configure do |config|
   config.before :suite do
-    AnsibleHelper.instance.playbook "playbooks/python-prod-playbook.yml", { copy_wsgi: true, python_version: "2" }
+    AnsibleHelper.playbook("playbooks/python-prod-playbook.yml", ENV["TARGET_HOST"], {
+      copy_wsgi: true,
+      python_version: "2"
+    })
   end
 end
 
-describe "Nginx config should be valid" do
-  include_examples "nginx::config"
+context "Nginx" do
+  include_examples "nginx"
 end
 
 describe command('curl -i prod-test.dev') do

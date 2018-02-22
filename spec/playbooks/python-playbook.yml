@@ -27,4 +27,4 @@
 
     - name: Create Python Virutalenv
       command: virtualenv {{ http_root }}/{{ domain }}/env -p python{{ python_version }}
-      when: env_name != "prod"
+      when: env_name != "dev"

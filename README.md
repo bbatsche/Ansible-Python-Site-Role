@@ -1,7 +1,7 @@
 Ansible Python Site Role
 ========================
 
-[![Build Status](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role.svg?branch=master)](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role) [![Ansible Galaxy](https://img.shields.io/ansible/role/7433.svg)](https://galaxy.ansible.com/bbatsche/PostgreSQL)
+[![Build Status](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role.svg?branch=master)](https://travis-ci.org/bbatsche/Ansible-Python-Site-Role) [![Ansible Galaxy](https://img.shields.io/ansible/role/7433.svg)](https://galaxy.ansible.com/bbatsche/Python)
 
 This role will create a site in Nginx for running applications written in Python. It supports either Python 2.7 or 3.4.
 

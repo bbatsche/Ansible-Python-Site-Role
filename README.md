@@ -14,10 +14,11 @@ Role Variables
 --------------
 
 - `domain` &mdash; Site domain to be created.
-- `python_version` &mdash; Python version to use with this site. Default is "3". Other possible values are "3.4", "2", or "2.7". In general, you should probably stick to major version numbers.
-- `env_name` &mdash; Whether this server is a "development", "production", or other type of server. Development servers will use the global Python binaries and packages, other types will use a virtualenv setup in the site directory. Default is "dev".
-- `copy_wsgi` &mdash; Whether to copy a stub passenger_wsgi.py file to the site, useful for testing. Default is no.
-- `http_root` &mdash; Directory all site directories will be created under. Default is "/srv/http".
+- `python_version` &mdash; Python version to use with this site. Default is "3"
+- `env_name` &mdash; Whether this server is a "development", "production", or other type of server. Development servers will use the global Python binaries and packages, other types will use a virtualenv setup in the site directory. Default is "dev"
+- `copy_wsgi` &mdash; Whether to copy a stub passenger_wsgi.py file to the site, useful for testing. Default is no
+- `http_root` &mdash; Directory all site directories will be created under. Default is "/srv/http"
+- `nginx_configs` &mdash; Additional config files to add to the end of the domain's `server` block. These files should be copied to `/etc/nginx/conf.d`. Default is the domain's Python configuration: `[ python-{{ domain }}.conf ]`
 
 Dependencies
 ------------

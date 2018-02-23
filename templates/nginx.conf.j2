@@ -1,0 +1,7 @@
+passenger_app_type wsgi;
+
+{% if env_name == "dev" %}
+passenger_python /usr/bin/python{{ python_version }};
+{% else %}
+passenger_python {{ http_root }}/{{ domain }}/env/bin/python;
+{% endif %}

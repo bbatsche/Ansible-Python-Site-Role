@@ -40,6 +40,14 @@
     state: present
   when: env_name == "dev"
 
+- name: Copy Nginx Config
+  template: src=nginx.conf.j2 dest=/etc/nginx/conf.d/python-{{ domain }}.conf
+  become: yes
+  when: domain is defined
+  notify:
+    - Restart Nginx
+    - Restart Passenger App
+
 - name: Copy Passenger WSGI Stub
   template:
     src: passenger_wsgi.py.j2

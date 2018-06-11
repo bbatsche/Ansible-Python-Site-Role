@@ -12,4 +12,4 @@
       passenger_app: yes
 
   tasks:
-    - include: tasks/main.yml
+    - import_tasks: tasks/main.yml

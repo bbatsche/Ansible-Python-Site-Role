@@ -1,26 +1,31 @@
 ---
 - name: Install Python
-  apt: name={{ item }} state=present
+  apt:
+    name:
+      - python
+      - python-dev
+      - python-pip
+      - python3
+      - python3-dev
+      - python3-pip
+    state: present
   become: yes
-  with_items:
-    - python
-    - python-dev
-    - python-pip
-    - python3
-    - python3-dev
-    - python3-pip
 
-- name: Install Virtualenv
-  pip: name=virtualenv executable={{ item }}
+- name: Upgrade Pip
+  pip: name=pip executable={{ item }} state=latest
   become: yes
-  with_items:
-    - pip2
+  loop:
     - pip3
+    - pip2
 
-- name: Install Virtualenv Wrapper
-  pip: name=virtualenvwrapper executable={{ item }}
+- name: Install Virtualenv and Virtualenvwrapper
+  pip:
+    name:
+      - virtualenv
+      - virtualenvwrapper
+    executable: "{{ item }}"
   become: yes
-  with_items:
+  loop:
     - pip2
     - pip3
 
@@ -54,10 +59,3 @@
     dest: "{{ http_root }}/{{ domain }}/passenger_wsgi.py"
   when: copy_wsgi
   notify: Restart Passenger App
-
-- name: Upgrade Pip
-  pip: name=pip executable={{ item }} state=latest
-  become: yes
-  with_items:
-    - pip3
-    - pip2

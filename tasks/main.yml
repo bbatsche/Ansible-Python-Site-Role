@@ -1,4 +1,7 @@
 ---
+- debug: var=ansible_distribution_release
+- debug: var=python_version
+
 - name: Verify Distro and Python Version
   assert:
     that: not (ansible_distribution_release == "trusty" and (python_version == 2 or python_version == "2"))

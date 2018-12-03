@@ -8,6 +8,10 @@ RSpec.configure do |config|
       python_version: "2"
     })
   end
+
+  config.before :all do
+    skip "No support for Python 2 in Trusty" if ENV["TARGET_HOST"] == "trusty"
+  end
 end
 
 context "Nginx" do

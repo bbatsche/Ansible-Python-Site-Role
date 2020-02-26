@@ -19,27 +19,21 @@ cache:
 jobs:
   include:
     - stage: Spec
-      name: Xenial
-      env: ANSIBLE_VERSION="2.9" ENVIRONMENT_NAME=xenial
-      script: bundle exec rake spec:$ENVIRONMENT_NAME
-    - name: Bionic
+      name: Bionic
       env: ANSIBLE_VERSION="2.9" ENVIRONMENT_NAME=bionic
       script: bundle exec rake spec:$ENVIRONMENT_NAME
 
     - name: Legacy Parameters
-      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty
+      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=xenial
       script: bundle exec rake spec:$ENVIRONMENT_NAME
 
     - stage: Idempotence
-      name: Xenial
-      env: ANSIBLE_VERSION="2.9" ENVIRONMENT_NAME=xenial
-      script: ./idempotence.sh
-    - name: Bionic
+      name: Bionic
       env: ANSIBLE_VERSION="2.9" ENVIRONMENT_NAME=bionic
       script: ./idempotence.sh
 
     - name: Legacy Parameters
-      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty
+      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=xenial
       script: ./idempotence.sh
 
 before_install:

@@ -3,8 +3,6 @@ vm:
   global:
     ram: 1024
     num_cpus: 2
-  trusty:
-    box: ubuntu/trusty64
   xenial:
     box: ubuntu/xenial64
   bionic:

@@ -2,9 +2,6 @@
 - hosts: all
   gather_facts: false
 
-  vars:
-    use_python3: "{{ lookup('env', 'ANSIBLE_PYTHON_VERSION') != '2' }}"
-
   roles:
     - bbatsche.Base
     - role: geerlingguy.swap
@@ -16,8 +13,7 @@
   pre_tasks:
     - name: Install Python for Ansible
       raw: >
-        bash -c "test -e /usr/bin/python{{ "3" if use_python3 else "" }} ||
-        (apt -qqy update && apt install -qqy python{{ "3" if use_python3 else "" }}-minimal)"
+        bash -c "test -e /usr/bin/python3 || (apt -qqy update && apt install -qqy python3-minimal)"
       become: yes
       register: output
       changed_when:

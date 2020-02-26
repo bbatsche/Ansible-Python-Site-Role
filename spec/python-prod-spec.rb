@@ -20,6 +20,6 @@ describe "Python site" do
   include_examples "curl request html"
 
   it "executed Python code" do
-    expect(subject.stdout).to match /Phusion Passenger is serving Python 3 code on python\.test/
+    expect(subject.stdout).to match /Phusion Passenger is serving Python code on python\.test/
   end
 end

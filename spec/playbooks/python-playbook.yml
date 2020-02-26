@@ -27,5 +27,5 @@
       when: ansible_connection | default('smart') == 'docker'
 
     - name: Create Python Virutalenv
-      command: virtualenv {{ http_root }}/{{ domain }}/env -p python{{ python_version }}
+      command: virtualenv {{ http_root }}/{{ domain }}/env -p python3
       when: env_name != "dev"

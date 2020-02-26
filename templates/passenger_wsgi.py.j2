@@ -1,5 +1,5 @@
 def application(environ, start_response):
-    response_body = b"Phusion Passenger is serving Python {{ python_version }} code on {{ domain }}.\n"
+    response_body = b"Phusion Passenger is serving Python code on {{ domain }}.\n"
 
     start_response('200 OK', [('Content-Type',  'text/html')])
 

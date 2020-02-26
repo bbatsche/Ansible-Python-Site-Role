@@ -27,8 +27,7 @@ jobs:
       script: bundle exec rake spec:$ENVIRONMENT_NAME
 
     - name: Legacy Parameters
-      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty ANSIBLE_PYTHON_VERSION=2
-      python: 2.7
+      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty
       script: bundle exec rake spec:$ENVIRONMENT_NAME
 
     - stage: Idempotence
@@ -40,8 +39,7 @@ jobs:
       script: ./idempotence.sh
 
     - name: Legacy Parameters
-      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty ANSIBLE_PYTHON_VERSION=2
-      python: 2.7
+      env: ANSIBLE_VERSION="2.5" ENVIRONMENT_NAME=trusty
       script: ./idempotence.sh
 
 before_install:

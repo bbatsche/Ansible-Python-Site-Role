@@ -33,7 +33,7 @@ class VagrantEnv
 
     line = "#{name} ansible_host=#{config[:host_name]} ansible_user=#{config[:user]}"
     line << " ansible_port=#{config[:port]} ansible_ssh_private_key_file=#{keyPath}"
-    line << " ansible_python_interpreter=/usr/bin/python3" if use_python3
+    line << " ansible_python_interpreter=/usr/bin/python3"
 
     return line
   end

@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Ben Batschelet
-  description: Create an Nginx site running either Python 2.7 or 3.4 through Phusion Passenger
+  description: Create an Nginx site running either Python 3 through Phusion Passenger
   license: MIT
   min_ansible_version: 2.5
   platforms:
@@ -16,7 +16,6 @@ galaxy_info:
     - phusion
     - passenger
     - python
-    - python2
     - python3
 dependencies:
   - role: bbatsche.Nginx

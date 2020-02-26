@@ -1,19 +1,14 @@
 ---
-- name: Verify Distro and Python Version
-  assert:
-    that: not (ansible_distribution_release == "trusty" and python_version | string == "2")
-    msg: This role no longer supports Python 2 in Ubuntu 14.04 Trusty
-
 - name: Install Python
   apt:
-    name: "{{ python_packages[python_version | string] }}"
+    name: "{{ python_packages }}"
     state: present
   become: yes
 
 - name: Upgrade Pip
   pip:
     name: [setuptools, pip]
-    executable: pip{{ python_version }}
+    executable: pip3
     state: latest
   become: yes
 
@@ -22,7 +17,7 @@
     name:
       - virtualenv
       - virtualenvwrapper
-    executable: pip{{ python_version }}
+    executable: pip3
     extra_args: --ignore-installed
   become: yes
 

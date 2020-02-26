@@ -68,6 +68,6 @@ class DockerEnv
   end
 
   def inventory_line
-    "#{name} ansible_connection=docker ansible_user=root" + (use_python3 ? " ansible_python_interpreter=/usr/bin/python3" : "")
+    "#{name} ansible_connection=docker ansible_user=root ansible_python_interpreter=/usr/bin/python3"
   end
 end
